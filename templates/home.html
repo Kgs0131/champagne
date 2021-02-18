@@ -22,10 +22,10 @@
 						<tbody>
 							{% for note in notes %}
 								<tr class="align-middle">
-									<td>{{ note['title'] }}</td>
-									<td>{{ note['lastModifiedDate'] }}</td>
+									<td>{{ note['title']['S']}}</td>
+									<td>{{ note['notedate']['S'] }}</td>
 									<td>
-										<a class="btn btn-primary" role="button" href="{{ url_for('viewNote', noteId=note['id']) }}">View</a>
+										<a class="btn btn-primary" role="button" href="{{ url_for('viewNote', noteId=note['id']['N']) }}">View</a>
 									</td>
 								</tr>
 							{% endfor %}

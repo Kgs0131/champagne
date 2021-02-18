@@ -3,8 +3,8 @@
 {% block header %}
 	<div class="col">
 		<h1 class="mb-0">{{ headerLabel }}</h1>
-		{% if note and note['lastModifiedDate'] %}
-			<small class="fs-6 text-muted">(last modified: {{ note['lastModifiedDate'] }})</small>
+		{% if note and note['notedate']['S'] %}
+			<small class="fs-6 text-muted">(last modified: {{ note['notedate']['S'] }})</small>
 		{% endif %}
 	</div>
 {% endblock %}
@@ -14,17 +14,17 @@
 		<div class="row mt-4">
 			<div class="col-xs-12 col-md-6 mx-auto">
 				<label for="noteTitle" class="form-label">Title</label>
-				<input type="text" class="form-control" id="noteTitle" name="noteTitle" value="{{ note['title'] if note }}">
+				<input type="text" class="form-control" id="noteTitle" name="noteTitle" value="{{ note['title']['S'] if note }}">
 			</div>
 		</div>
 		<div class="row mt-4">
 			<div class="col-xs-12 col-md-6 mx-auto">
 				<label for="noteMessage" class="form-label">Message</label>
-				<textarea class="form-control" id="noteMessage" name="noteMessage" rows="15">{{ note['message'] if note }}</textarea>
+				<textarea class="form-control" id="noteMessage" name="noteMessage" rows="15">{{ note['content']['S'] if note }}</textarea>
 			</div>
 		</div>
 		{% if note %}
-			<input type="hidden" name="noteId" value="{{ note['id'] }}">
+			<input type="hidden" name="noteId" value="{{ note['id']['N'] }}">
 		{% endif %}
 		<div class="row mt-3">
 			<div class="d-flex justify-content-end col-xs-12 col-md-6 mx-auto">

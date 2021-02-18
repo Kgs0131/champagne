@@ -2,8 +2,8 @@
 
 {% block header %}
 	<div class="col">
-		<h1 class="mb-0">{{ note['title'] }}</h1>
-		<small class="fs-6 text-muted">(last modified: {{ note['lastModifiedDate'] }})</small>
+		<h1 class="mb-0">{{ note['title']['S'] }}</h1>
+		<small class="fs-6 text-muted">(last modified: {{ note['notedate']['S'] }})</small>
 	</div>
 {% endblock %}
 
@@ -11,15 +11,15 @@
 	<div class="row mt-4">		
 		<div class="col-xs-12 col-md-6 mx-auto">
 			<a class="btn btn-primary" role="button" href="/">Home</a>
-			<a class="btn btn-outline-primary" role="button" href="{{ url_for('editNote', noteId=note['id']) }}">Edit</a>
-			<a class="btn btn-outline-danger" role="button" href="{{ url_for('deleteNote', noteId=note['id']) }}">Delete</a>
+			<a class="btn btn-outline-primary" role="button" href="{{ url_for('editNote', noteId=note['id']['N']) }}">Edit</a>
+			<a class="btn btn-outline-danger" role="button" href="{{ url_for('deleteNote', noteId=note['id']['N']) }}">Delete</a>
 		</div>
 	</div>
 	<div class="row mt-4">
 		<div class="col-xs-12 col-md-6 mx-auto">
 			<h6>Message</h6>
 			<div id="noteMessage" >
-				{{ note['message']|markdown }}
+				{{ note['content']['S']|markdown }}
 			</div>
 		</div>
 	</div>
