@@ -26,12 +26,11 @@ def addNote():
 
 @app.route("/createNote", methods=["post"])
 def createNote():
-    noteId = 0
+    noteId = 1
     scan = dynamodb.scan(TableName='notes')['Items']
     for i in scan: 
         noteId = noteId + 1
 
-    noteId = noteId+1
     noteId = str(noteId) 
 
     lastModifiedDate = datetime.now()
